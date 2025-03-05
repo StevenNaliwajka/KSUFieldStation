@@ -11,7 +11,7 @@ const int moisturePin2 = A1;
 
 // Setup a oneWire instance to communicate with any OneWire devices
 OneWire oneWire(ONE_WIRE_BUS);
-OneWire2 oneWire2(ONE_WIRE_BUS2);
+OneWire oneWire2(ONE_WIRE_BUS2);
 
 // Pass our oneWire reference to Dallas Temperature
 DallasTemperature sensors(&oneWire);
