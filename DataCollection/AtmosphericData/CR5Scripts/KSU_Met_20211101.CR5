@@ -1,0 +1,264 @@
+'CR5000 Logger Software for KSU Field Station Met Station
+'Created by Mario Bretfeld (mbretfel@kennesaw.edu)
+'Last Edit: November 1, 2021 (separate precip table)
+'August 20, 2021 (SI-111 addition)
+'June 30, 2020 (initial program)
+
+
+PipeLineMode
+
+'#########################
+'Declare Variables, Constants and Units
+'#########################
+
+' Constants
+Const SCAN_INTERVAL = 100  'Unique value, measurement rate 100 ms (10 Hz) or 50 ms (20 Hz).
+Const OUTPUT_INTERVAL = 30 'Unique value, online flux data output interval in minutes.
+Const SCAN_BUFFER_SIZE = 60*INT (1000/SCAN_INTERVAL)     'Compute a 60 second scan buffer.
+Const SDM_PER = 30
+
+'SI-111
+Const mC2 = 111356
+Const mC1 = 10653700
+Const mC0 = 1807660000
+Const bC2 = 3647.84
+Const bC1 = 44918.1
+Const bC0 = -11068000
+
+' Hidden Variables (used in calculations and conversion)
+Dim Press_mbar
+
+' Public Variables
+Public BattV               : Units BattV = V           ' Battery Voltage
+Public PTemp_C             : Units PTemp_C = C         ' Logger Temp
+Public Precip              : Units Precip = mm         ' Tipping Bucket
+Public PA                  : Units PA = kPa            ' Air pressure
+Public NetSW               : Units NetSW = W m-2       ' Net Rad (shortwave)
+Public NetLW               : Units NetLW = W m-2       ' Net Rad (longwave)
+Public NETRAD              : Units NETRAD = W m-2      ' Net Rad
+Public WSData(3)  ' Wind Sonic Data
+Public N(8)       ' Wind Sonic Diagnostics
+Public TRHData(2) ' AirT & RH
+Public TargTempC       : Units TargTempC = C
+Public SBTempC         : Units SBTempC = C
+Public SBTempK, TargmV, m, b, TargTempK
+
+' Wind Sonic Aliases
+Alias WSData(1) = WD       : Units WD = degrees
+Alias WSData(2) = WS       : Units WS = m s-1
+Alias WSData(3) = WSDiag   : Units WSDiag = unitless
+Alias N(1)=SmplsF
+Alias N(2)=Diag1F
+Alias N(3)=Diag2F
+Alias N(4)=Diag4F
+Alias N(5)=Diag8F
+Alias N(6)=Diag9F
+Alias N(7)=Diag10F
+Alias N(8)=NNDF
+
+' AirT & RH Aliases
+Alias TRHData(1) = TA     : Units TA = C
+Alias TRHData(2) = RH     : Units RH = %
+
+'CSAT3 Sonic Anemometer - Above canopy
+Public Sonic_CSAT3(5)
+Alias Sonic_CSAT3(1) = Ux_CSAT3 : Units Ux_CSAT3 = m s-1
+Alias Sonic_CSAT3(2) = Uy_CSAT3 : Units Uy_CSAT3 = m s-1
+Alias Sonic_CSAT3(3) = Uz_CSAT3 : Units Uz_CSAT3 = m s-1
+Alias Sonic_CSAT3(4) = Ts_CSAT3 : Units Ts_CSAT3 = C
+Alias Sonic_CSAT3(5) = DIAG_CSAT3 : Units DIAG_CSAT3 = unitless
+
+'LI-7500 CO2/H2O IRGA
+Public LI7500(4)
+Alias LI7500(1) = rho_c_LI7500 : Units rho_c_LI7500 = mg m-3
+Alias LI7500(2) = rho_v_LI7500 : Units rho_v_LI7500 = g m-3
+Alias LI7500(3) = P_LI7500 : Units P_LI7500 = kPa
+Alias LI7500(4) = DIAG_LI7500 : Units DIAG_LI7500 = unitless
+
+'#########################
+'Define Data Tables
+'#########################
+'Time Series Flux Data
+DataTable (Data_Flux,TRUE,-1)
+	DataInterval (0,SCAN_INTERVAL,mSec,100)
+  TableFile ("CRD:"&Status.SerialNumber(1,1)&".FluxData_10Hz",64,-1,0,1,Day,0,0)
+  Sample (1,Ux_CSAT3,IEEE4)
+	Sample (1,Uy_CSAT3,IEEE4)
+	Sample (1,Uz_CSAT3,IEEE4)
+	Sample (1,Ts_CSAT3,IEEE4)
+	Sample (1,rho_c_LI7500,IEEE4)
+	Sample (1,rho_v_LI7500,IEEE4)
+	Sample (1,P_LI7500,IEEE4)
+'  Sample (1,DIAG_CSAT3_7m,IEEE4)    'removed to preserve space on cards
+'  Sample (1,DIAG_CSAT3_17m,IEEE4)   'removed to preserve space on cards
+  Sample (1,DIAG_LI7500,IEEE4)
+EndTable
+
+' Meteorological Data
+DataTable(Data_30Min,True,-1)
+	DataInterval(0,30,Min,10)
+  TableFile ("CRD:"&Status.SerialNumber(1,1)&".SummaryData_30Min",64,-1,0,1,Day,0,0)
+	Average(1,rho_c_LI7500,IEEE4,False)
+	Average(1,rho_v_LI7500,IEEE4,False)
+	Average(1,Ux_CSAT3,IEEE4,False)
+	Average(1,Uy_CSAT3,IEEE4,False)
+	Average(1,Uz_CSAT3,IEEE4,False)
+	Average(1,Ts_CSAT3,IEEE4,False)
+	Average(1,P_LI7500,IEEE4,False)
+	Average(1,TA,IEEE4,False)
+	Maximum(1,TA,IEEE4,False,False)
+	Minimum(1,TA,IEEE4,False,False)
+	Average(1,RH,IEEE4,False)
+	Maximum(1,RH,IEEE4,False,False)
+	Minimum(1,RH,IEEE4,False,False)
+	Average(1,WS,IEEE4,False)
+	Maximum(1,WS,IEEE4,False,False)
+	Sample(1,WD,IEEE4)
+	Totalize(1,Precip,IEEE4,False)
+	Average(1,PA,IEEE4,False)
+	Average(1,NetSW,IEEE4,False)
+	Average(1,NetLW,IEEE4,False)
+	Average(1,NETRAD,IEEE4,False)
+	Average(1,TargTempC,IEEE4,False)
+	Maximum(1,TargTempC,IEEE4,False,False)
+	Minimum(1,TargTempC,IEEE4,False,False)
+	Average(1,SBTempC,IEEE4,False)
+	Maximum(1,SBTempC,IEEE4,False,False)
+	Minimum(1,SBTempC,IEEE4,False,False)
+	Minimum(1,BattV,IEEE4,False,False)
+  StdDev(1,rho_c_LI7500,IEEE4,False)
+	StdDev(1,rho_v_LI7500,IEEE4,False)
+	StdDev(1,Ux_CSAT3,IEEE4,False)
+	StdDev(1,Uy_CSAT3,IEEE4,False)
+	StdDev(1,Uz_CSAT3,IEEE4,False)
+	StdDev(1,Ts_CSAT3,IEEE4,False)
+	StdDev(1,P_LI7500,IEEE4,False)
+	StdDev(1,TA,IEEE4,False)
+	StdDev(1,RH,IEEE4,False)
+	StdDev(1,WS,IEEE4,False)
+	Sample(1,WSDiag,IEEE4)
+	Totalize(1,SmplsF,IEEE4,False)
+	Totalize(1,Diag1F,IEEE4,False)
+	Totalize(1,Diag2F,IEEE4,False)
+	Totalize(1,Diag4F,IEEE4,False)
+	Totalize(1,Diag8F,IEEE4,False)
+	Totalize(1,Diag9F,IEEE4,False)
+	Totalize(1,Diag10F,IEEE4,False)
+	Totalize(1,NNDF,IEEE4,False)
+	StdDev(1,PA,IEEE4,False)
+	StdDev(1,NetSW,IEEE4,False)
+	StdDev(1,NetLW,IEEE4,False)
+	StdDev(1,NETRAD,IEEE4,False)
+	StdDev(1,TargTempC,IEEE4,False)
+	StdDev(1,SBTempC,IEEE4,False)
+EndTable
+
+DataTable(Data_30Min_Precip,True,-1)
+	DataInterval(0,5,Min,10)
+  TableFile ("CRD:"&Status.SerialNumber(1,1)&".Precip_30Min",64,-1,0,1,Day,0,0)
+	Totalize(1,Precip,IEEE4,False)
+	Average(1,rho_c_LI7500,IEEE4,False)
+	Average(1,rho_v_LI7500,IEEE4,False)
+	Average(1,Ux_CSAT3,IEEE4,False)
+	Average(1,Uy_CSAT3,IEEE4,False)
+	Average(1,Uz_CSAT3,IEEE4,False)
+	Average(1,Ts_CSAT3,IEEE4,False)
+	Average(1,P_LI7500,IEEE4,False)
+EndTable
+
+'Main Program
+BeginProg
+
+' Fast Scan for EC Data
+
+	SDMSpeed (SDM_PER)
+  Scan (SCAN_INTERVAL,mSec,SCAN_BUFFER_SIZE,0)
+
+  'Measure CSAT3
+  CSAT3 (Sonic_CSAT3,1,3,91,10)
+
+	'Measure LI-7500 IRGA
+	CS7500 (rho_c_LI7500,1,7,6)
+  rho_c_LI7500 = rho_c_LI7500*44.0095
+  rho_v_LI7500 = rho_v_LI7500*18.0153*0.001
+
+	'TE525/TE525WS Rain Gauge measurement 'Rain_mm'
+	PulseCount(Precip,1,1,2,0,0.254,0)
+
+  'Output
+  CallTable Data_Flux
+  CallTable Data_30Min_Precip
+
+NextScan
+
+SlowSequence	'Main Scan
+	Scan(10,Sec,1,0)
+
+		'Default CR5000 Datalogger Battery Voltage measurement 'BattV'
+		Battery(BattV)
+
+		'Default CR5000 Datalogger Wiring Panel Temperature measurement 'PTemp_C'
+		PanelTemp(PTemp_C,250)
+
+    'HygroVue 5 Air T and RH
+    SDI12Recorder(TRHData(),2,"0","M!",1,0)
+
+		'WindSonic4 Two Dimensional Sonic Wind Speed & Direction Sensor measurements 'WD_deg', 'WS_ms', and 'WSDiag'
+		'Get data from WindSonic4
+		SDI12Recorder(WD,3,"0","R0!",1,0)
+		If WD = NaN Then
+			Move(WS,2,WD,1)
+		EndIf
+		'Set diagnostic variables as needed
+		Move(SmplsF,8,0,1)
+		Select Case WSDiag
+			Case=0
+				SmplsF=1
+			Case=1
+				Diag1F=1
+			Case=2
+				Diag2F=1
+			Case=4
+				Diag4F=1
+			Case=8
+				Diag8F=1
+			Case=9
+				Diag9F=1
+			Case=10
+				Diag10F=1
+			Else
+				NNDF=1
+		EndSelect
+
+		'CS105 Barometric Pressure Sensor measurement 'Press_mbar'
+		PortSet(1,1)
+		VoltSe(Press_mbar,1,mV5000,1,1,0,250,0.184,639.0215)
+		PA=Press_mbar*0.1
+
+		'CNR2 Net Radiometer measurements 'NetSW', 'NetLW', and 'NetRad'
+		VoltDiff(NetSW,1,mV20,2,True,0,250,63.73486,0)
+		VoltDiff(NetLW,1,mV20,3,True,0,250,81.96721,0)
+		NETRAD = NetSW + NetLW
+
+   'Instruction to measure sensor body temperature (green wire to SE1, white wire to EX1, blue wire ‘to ground)
+    Therm109 (SBTempC,1,2,Vx1,0,_60Hz,1.0,0)
+		'BrHalf(SBTempC,1,mV5000,9,Vx1,1,5000,True,0,250,1,0)
+		'SBTempC = 24900*(1/SBTempC-1)
+		'SBTempC = LOG(SBTempC)
+	  'SBTempC = 1/(1.129241e-3+2.341077e-4*SBTempC+8.775468e-8*(SBTempC^3))-273.15
+
+   'Instruction to measure mV output of thermopile detector (red wire to 2H, black wire to 2L, clear ‘wire to ground)
+    VoltDiff (TargmV,1,mV20,4,True ,0,_60Hz,1.0,0)
+   'Calculation of m (slope) and b (intercept) coefficients for target temperature calculation
+    m = mC2 * SBTempC^2 + mC1 * SBTempC + mC0
+    b = bC2 * SBTempC^2 + bC1 * SBTempC + bC0
+   'Calculation of target temperature
+    SBTempK = SBTempC + 273.15
+    TargTempK = ((SBTempK^4) + m * TargmV + b)^0.25
+    TargTempC = TargTempK - 273.15
+
+		'Call Data Tables and Store Data
+		CallTable Data_30Min
+
+	NextScan
+EndProg
