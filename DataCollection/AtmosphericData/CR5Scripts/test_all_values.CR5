@@ -168,6 +168,9 @@ EndTable
 
 'Main Program
 BeginProg
+  SerialOpen (COM1, 9600, 0, 0, 100)
+  SerialOut (COM1, "Timestamp,TA,RH,PA,WD,WS,Precip,NetSW,NetLW,NETRAD,BattV,TargTempC\r\n", 9600, 0)
+
 
 ' Fast Scan for EC Data
 
@@ -259,9 +262,6 @@ SlowSequence	'Main Scan
 
 		'Call Data Tables and Store Data
 		CallTable Data_30Min
-
-    '--- Serial Output for Testing ---
-    SerialOpen (COM1, 9600, 0, 0, 100)  ' Open COM1 at 9600 baud
     
     SerialOut (COM1, Format("%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n", _
       Status.Timestamp, TA, RH, PA, WD, WS, Precip, NetSW, NetLW, NETRAD, BattV, TargTempC), 9600, 0)
