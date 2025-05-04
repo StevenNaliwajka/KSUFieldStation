@@ -261,11 +261,25 @@ SlowSequence	'Main Scan
 		CallTable Data_30Min
 
     '--- Serial Output for Testing ---
-    SerialOpen (COM1, 9600, 0, 0, 100)  ' Open COM1 at 9600 baud
-    
-    SerialOut (COM1, Format("%s,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n", _
-      Status.Timestamp, TA, RH, PA, WD, WS, Precip, NetSW, NetLW, NETRAD, BattV, TargTempC), 9600, 0)
+    ' Note: Port 1 = COM1; use actual port number
+    SerialOpen (1, 9600, 0, 0, 100)  ' Open COM1 at 9600 baud
 
+    Dim serialOutString As String * 100
+
+    serialOutString = Status.Timestamp & "," & _
+      Str(TA, "%6.2f") & "," & _
+      Str(RH, "%6.2f") & "," & _
+      Str(PA, "%6.2f") & "," & _
+      Str(WD, "%6.2f") & "," & _
+      Str(WS, "%6.2f") & "," & _
+      Str(Precip, "%6.2f") & "," & _
+      Str(NetSW, "%6.2f") & "," & _
+      Str(NetLW, "%6.2f") & "," & _
+      Str(NETRAD, "%6.2f") & "," & _
+      Str(BattV, "%6.2f") & "," & _
+      Str(TargTempC, "%6.2f") & CHR(13) & CHR(10)
+
+    SerialOut(1, serialOutString, 9600, 0)
 
 	NextScan
 EndProg
