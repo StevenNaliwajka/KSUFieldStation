@@ -1,0 +1,162 @@
+AIR:
+Set1: Soil Moisture: 668 | Soil Moisture (%): 0% | Soil Temperature: 25.37 °C
+Set2: Soil Moisture: 668 | Soil Moisture (%): 0% | Soil Temperature: 25.37 °C
+Set1: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.37 °C
+Set2: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.44 °C
+Set1: Soil Moisture: 669 | Soil Moisture (%): 0% | Soil Temperature: 25.44 °C
+Set2: Soil Moisture: 669 | Soil Moisture (%): 0% | Soil Temperature: 25.44 °C
+Set1: Soil Moisture: 663 | Soil Moisture (%): 0% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 663 | Soil Moisture (%): 0% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 669 | Soil Moisture (%): 0% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 669 | Soil Moisture (%): 0% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.62 °C
+Set2: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.69 °C
+Set1: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.62 °C
+Set2: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.69 °C
+Set1: Soil Moisture: 674 | Soil Moisture (%): 0% | Soil Temperature: 25.62 °C
+Set2: Soil Moisture: 673 | Soil Moisture (%): 0% | Soil Temperature: 25.69 °C
+Set1: Soil Moisture: 675 | Soil Moisture (%): 0% | Soil Temperature: 25.62 °C
+Set2: Soil Moisture: 675 | Soil Moisture (%): 0% | Soil Temperature: 25.62 °C
+10 min
+1: 668 -> 675
+2: 668 -> 675
+
+'normal' wetness w/ Both in:
+Set1: Soil Moisture: 205 | Soil Moisture (%): 74% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 258 | Soil Moisture (%): 64% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 198 | Soil Moisture (%): 75% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 274 | Soil Moisture (%): 61% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 282 | Soil Moisture (%): 59% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 289 | Soil Moisture (%): 58% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 294 | Soil Moisture (%): 57% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 299 | Soil Moisture (%): 56% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 304 | Soil Moisture (%): 55% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 309 | Soil Moisture (%): 54% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 195 | Soil Moisture (%): 75% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 314 | Soil Moisture (%): 53% | Soil Temperature: 25.44 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.50 °C
+Set2: Soil Moisture: 318 | Soil Moisture (%): 52% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.56 °C
+Set2: Soil Moisture: 323 | Soil Moisture (%): 51% | Soil Temperature: 25.50 °C
+Set1: Soil Moisture: 195 | Soil Moisture (%): 75% | Soil Temperature: 25.62 °C
+Set2: Soil Moisture: 327 | Soil Moisture (%): 51% | Soil Temperature: 25.56 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.69 °C
+Set2: Soil Moisture: 331 | Soil Moisture (%): 50% | Soil Temperature: 25.69 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.75 °C
+Set2: Soil Moisture: 333 | Soil Moisture (%): 50% | Soil Temperature: 25.81 °C
+Set1: Soil Moisture: 196 | Soil Moisture (%): 75% | Soil Temperature: 25.81 °C
+Set2: Soil Moisture: 335 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.87 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.87 °C
+Set2: Soil Moisture: 337 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 337 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.87 °C
+Set2: Soil Moisture: 338 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.87 °C
+Set2: Soil Moisture: 337 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 194 | Soil Moisture (%): 76% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 338 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+Set1: Soil Moisture: 192 | Soil Moisture (%): 76% | Soil Temperature: 25.87 °C
+Set2: Soil Moisture: 337 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+Set1: Soil Moisture: 192 | Soil Moisture (%): 76% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 337 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+Set1: Soil Moisture: 193 | Soil Moisture (%): 76% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 338 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+23 minutes
+1: 205 -> 193
+2: 258 -> 338
+
+
+Only #1 in (bottom hole in box):
+Set1: Soil Moisture: 207 | Soil Moisture (%): 73% | Soil Temperature: 26.06 °C
+Set1: Soil Moisture: 209 | Soil Moisture (%): 73% | Soil Temperature: 26.12 °C
+Set1: Soil Moisture: 209 | Soil Moisture (%): 73% | Soil Temperature: 26.12 °C
+Set1: Soil Moisture: 211 | Soil Moisture (%): 72% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 213 | Soil Moisture (%): 72% | Soil Temperature: 26.19 °C
+5 min
+1: 207 -> 213
+
+Only #2 in (top hole in box): 
+Set2: Soil Moisture: 268 | Soil Moisture (%): 62% | Soil Temperature: 26.31 °C
+Set2: Soil Moisture: 300 | Soil Moisture (%): 56% | Soil Temperature: 26.31 °C
+Set2: Soil Moisture: 309 | Soil Moisture (%): 54% | Soil Temperature: 26.31 °C
+Set2: Soil Moisture: 313 | Soil Moisture (%): 53% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 315 | Soil Moisture (%): 53% | Soil Temperature: 26.19 °C
+5 min
+2: 268 -> 315
+
+Both 1+2
+Set1: Soil Moisture: 215 | Soil Moisture (%): 72% | Soil Temperature: 26.37 °C
+Set2: Soil Moisture: 279 | Soil Moisture (%): 60% | Soil Temperature: 26.31 °C
+Set1: Soil Moisture: 247 | Soil Moisture (%): 66% | Soil Temperature: 26.37 °C
+Set2: Soil Moisture: 284 | Soil Moisture (%): 59% | Soil Temperature: 26.31 °C
+Set1: Soil Moisture: 269 | Soil Moisture (%): 62% | Soil Temperature: 26.37 °C
+Set2: Soil Moisture: 289 | Soil Moisture (%): 58% | Soil Temperature: 26.31 °C
+Set1: Soil Moisture: 280 | Soil Moisture (%): 60% | Soil Temperature: 26.31 °C
+Set2: Soil Moisture: 292 | Soil Moisture (%): 57% | Soil Temperature: 26.25 °C
+Set1: Soil Moisture: 286 | Soil Moisture (%): 58% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 295 | Soil Moisture (%): 57% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 290 | Soil Moisture (%): 58% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 298 | Soil Moisture (%): 56% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 293 | Soil Moisture (%): 57% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 300 | Soil Moisture (%): 56% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 296 | Soil Moisture (%): 57% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 303 | Soil Moisture (%): 55% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 299 | Soil Moisture (%): 56% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 305 | Soil Moisture (%): 55% | Soil Temperature: 26.12 °C
+Set1: Soil Moisture: 302 | Soil Moisture (%): 55% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 307 | Soil Moisture (%): 54% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 272 | Soil Moisture (%): 61% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 306 | Soil Moisture (%): 55% | Soil Temperature: 26.19 °C
+Set1: Soil Moisture: 323 | Soil Moisture (%): 51% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 328 | Soil Moisture (%): 51% | Soil Temperature: 26.12 °C
+12 minute
+1: 215->323
+2: 279->328
+
+
+
+Loose wires. Solved.
+
+After validating. 
+
+Still ambiant soil
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 26.06 °C
+Set2: Soil Moisture: 335 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 26.00 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.94 °C
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 26.00 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.87 °C
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.81 °C
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.81 °C
+Set1: Soil Moisture: 344 | Soil Moisture (%): 48% | Soil Temperature: 25.94 °C
+Set2: Soil Moisture: 336 | Soil Moisture (%): 49% | Soil Temperature: 25.75 °C
+
+
+
+
+Final test with 'wet' soil
+Set1: Soil Moisture: 118 | Soil Moisture (%): 90% | Soil Temperature: 26.12 °C
+Set2: Soil Moisture: 161 | Soil Moisture (%): 82% | Soil Temperature: 26.00 °C
+Set1: Soil Moisture: 122 | Soil Moisture (%): 89% | Soil Temperature: 26.19 °C
+Set2: Soil Moisture: 160 | Soil Moisture (%): 82% | Soil Temperature: 26.06 °C
+Set1: Soil Moisture: 122 | Soil Moisture (%): 89% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 157 | Soil Moisture (%): 83% | Soil Temperature: 26.06 °C
+Set1: Soil Moisture: 125 | Soil Moisture (%): 89% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 160 | Soil Moisture (%): 82% | Soil Temperature: 26.12 °C
+Set1: Soil Moisture: 127 | Soil Moisture (%): 88% | Soil Temperature: 26.25 °C
+Set2: Soil Moisture: 160 | Soil Moisture (%): 82% | Soil Temperature: 26.12 °C
+Set1: Soil Moisture: 128 | Soil Moisture (%): 88% | Soil Temperature: 26.19 °C
+Set2: Soil Moisture: 159 | Soil Moisture (%): 82% | Soil Temperature: 26.06 °C
